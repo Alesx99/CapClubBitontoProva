@@ -16,6 +16,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install and Build 🔧
+        env:
+          VITE_API_BASE_URL: https://capclub-backend.onrender.com
         run: |
           npm run install:all
           npm run build
