@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Production builds
+dist/
+**/dist/
+build/
+**/build/
+
+# Local databases
+backend/data/*.db
+backend/data/*.db-journal
+backend/data/*.db-wal
+backend/data/backups/
+
+# Environment configurations
+.env
+**/.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDEs & System files
+.DS_Store
+.vscode/
+.idea/
+*.log

@@ -1,0 +1,17 @@
+{
+  "name": "capclub",
+  "version": "1.0.0",
+  "description": "CapClub - Café, Sport & Private Club Monorepo",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix backend && npm install --prefix frontend",
+    "seed": "node backend/src/db/seed.js",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix backend start",
+    "qr": "node scripts/show-qr.js"
+  },
+  "devDependencies": {
+    "qrcode-terminal": "^0.12.0"
+  }
+}
