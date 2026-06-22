@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: capclub-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_PASSWORD
+        value: capclub2026
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: SUPABASE_URL
+        value: https://rfesaebqmbugpysexejd.supabase.co
+      - key: SUPABASE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJmZXNhZWJxbWJ1Z3B5c2V4ZWpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNDA2NjEsImV4cCI6MjA5NzcxNjY2MX0._BiqtELDYpyrMCNJLuA-bEiD1memLrnor9HQreU8DGM
