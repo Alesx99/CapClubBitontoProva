@@ -1,3 +1,4 @@
+require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env') });
 const { initSchema, createMenuItem, getAllSettings, upsertSettings } = require('./index');
 
 async function seed() {
