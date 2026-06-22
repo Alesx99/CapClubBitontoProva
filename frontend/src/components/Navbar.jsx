@@ -47,7 +47,7 @@ export default function Navbar() {
             to="/prenota" 
             className="px-5 py-2.5 bg-[#D4AF37] hover:bg-[#C5A059] text-[#0B0B0C] border border-transparent hover:border-[#D4AF37] hover:bg-transparent hover:text-[#D4AF37] transition duration-300 font-bold tracking-luxurious rounded-sm"
           >
-            Riserva
+            Prenota
           </Link>
         </nav>
 
@@ -81,7 +81,7 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(false)}
             className="block py-3 bg-[#D4AF37] text-[#0B0B0C] rounded-sm transition"
           >
-            Riserva un tavolo / campo
+            Prenota un tavolo / campo
           </Link>
         </div>
       )}
