@@ -19,12 +19,17 @@ export default function AdminQr() {
     async function loadSettings() {
       try {
         const settings = await api.getSettings();
-        // If public_base_url is not set in backend settings, initialize with window origin
-        const defaultBase = settings.public_base_url || window.location.origin + window.location.pathname;
+        const origin = window.location.origin;
+        const pathname = window.location.pathname;
+        const cleanPath = pathname.endsWith('/') ? pathname : pathname + '/';
+        const defaultBase = settings.public_base_url || `${origin}${cleanPath}#/menu`;
         setBaseUrl(defaultBase);
       } catch (err) {
         console.error('Failed to load settings:', err);
-        setBaseUrl(window.location.origin + window.location.pathname);
+        const origin = window.location.origin;
+        const pathname = window.location.pathname;
+        const cleanPath = pathname.endsWith('/') ? pathname : pathname + '/';
+        setBaseUrl(`${origin}${cleanPath}#/menu`);
       } finally {
         setLoadingSettings(false);
       }

@@ -50,8 +50,10 @@ function EventManagerWrapper() {
 
   useEffect(() => {
     // Generate QR Code for /#/eventi
-    const host = window.location.origin + window.location.pathname;
-    const url = `${host}#/eventi`;
+    const origin = window.location.origin;
+    const pathname = window.location.pathname;
+    const cleanPath = pathname.endsWith('/') ? pathname : pathname + '/';
+    const url = `${origin}${cleanPath}#/eventi`;
     QRCode.toDataURL(url, { width: 200, margin: 2 })
       .then(data => setQrUrl(data))
       .catch(err => console.error(err));
