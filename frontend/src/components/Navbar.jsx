@@ -10,6 +10,7 @@ export default function Navbar() {
     { name: 'Home', path: '/' },
     { name: 'Chi Siamo', path: '/chi-siamo' },
     { name: 'Il Bistrot', path: '/bistrot' },
+    { name: 'Menù', path: '/menu' },
     { name: 'Sport Arena', path: '/sport' },
     { name: 'Kids & Eventi', path: '/eventi-privati' },
     { name: 'Contatti', path: '/contatti' }
