@@ -108,8 +108,8 @@ export default function PublicMenu() {
         </header>
 
         {/* Category sticky filter */}
-        <div className="sticky top-0 z-30 bg-[#0B0B0C]/85 backdrop-blur-md border-y border-[#27272A]/50 py-4 mb-10 overflow-x-auto scrollbar-none">
-          <div className="max-w-4xl mx-auto px-6 flex space-x-3 md:justify-center whitespace-nowrap">
+        <div className="sticky top-0 z-30 bg-[#0B0B0C]/85 backdrop-blur-md border-y border-[#27272A]/50 py-4 mb-10 overflow-x-auto md:overflow-x-visible scrollbar-none">
+          <div className="max-w-4xl mx-auto px-6 flex flex-nowrap md:flex-wrap gap-2.5 md:justify-center whitespace-nowrap md:whitespace-normal">
             <button
               onClick={() => setActiveCategory('ALL')}
               className={`px-4 py-2 text-[10px] font-semibold uppercase tracking-luxurious transition-all duration-300 rounded-full border ${
