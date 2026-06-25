@@ -340,6 +340,12 @@ const getPublicUrl = (bucket, filePath) => {
   return data.publicUrl;
 };
 
+const clearAllMenuItems = async () => {
+  checkClient();
+  const { error } = await supabase.from('menu_items').delete().neq('id', 0);
+  if (error) throw error;
+};
+
 module.exports = {
   initSchema,
   getAllMenuItems,
@@ -347,6 +353,7 @@ module.exports = {
   createMenuItem,
   updateMenuItem,
   deleteMenuItem,
+  clearAllMenuItems,
   reorderMenuItems,
   getAllSettings,
   upsertSettings,

@@ -351,6 +351,11 @@ if (useSupabase) {
     return getTableOccupancy(date, slot);
   };
 
+  const clearAllMenuItems = () => {
+    db.exec('DELETE FROM menu_items;');
+    db.exec("DELETE FROM sqlite_sequence WHERE name = 'menu_items';");
+  };
+
   module.exports = {
     initSchema,
     getAllMenuItems,
@@ -358,6 +363,7 @@ if (useSupabase) {
     createMenuItem,
     updateMenuItem,
     deleteMenuItem,
+    clearAllMenuItems,
     reorderMenuItems,
     getAllSettings,
     upsertSettings,

@@ -61,31 +61,106 @@ const request = async (method, path, body = null, isFormData = false) => {
 };
 
 // --- MOCK LOCALSTORAGE FALLBACK ENGINE (For GitHub Pages & Offline API) ---
-const MOCK_MENU_KEY = 'capclub_mock_menu';
-const MOCK_SETTINGS_KEY = 'capclub_mock_settings';
+const MOCK_MENU_KEY = 'capclub_mock_menu_v2';
+const MOCK_SETTINGS_KEY = 'capclub_mock_settings_v2';
 const MOCK_BOOKINGS_KEY = 'capclub_mock_bookings';
 const MOCK_OCCUPANCY_KEY = 'capclub_mock_occupancy';
 
 const initMockData = () => {
   if (!localStorage.getItem(MOCK_MENU_KEY)) {
     const defaultMenu = [
-      // Cocktails
-      { id: 1, section: "Cocktail d'Autore", title: "Royal Champagne Mojito", description: "Rum invecchiato 7 anni, menta, lime, Champagne Brut Royal.", price: 16, available: true, position: 0, is_event: false },
-      { id: 2, section: "Cocktail d'Autore", title: "Smoked Negroni Clad", description: "Gin Premium, Vermouth rosso barricato, Bitter Campari affumicato.", price: 15, available: true, position: 1, is_event: false },
-      { id: 3, section: "Cocktail d'Autore", title: "Golden Martini", description: "Vodka, Dry Vermouth, zeste di limone, scaglie d'oro edibili 24K.", price: 18, available: true, position: 2, is_event: false },
-      // Crudi
-      { id: 4, section: "Crudi di Mare", title: "Gran Plateau Royal", description: "Per 2 persone: 4 Ostriche, 4 scampi locali, 4 gamberi rossi Mazara, tartare di tonno.", price: 45, available: true, position: 0, is_event: false },
-      { id: 5, section: "Crudi di Mare", title: "Tartare di Salmone Selvaggio", description: "Salmone rosso d'Alaska battuto al coltello, avocado, mela verde.", price: 22, available: true, position: 1, is_event: false },
-      // Carni
-      { id: 6, section: "Selezioni Premium Carni", title: "Filetto al Tartufo Nero", description: "Filetto di manzo Piemontese, foie gras d'anatra, tartufo nero Norcia.", price: 38, available: true, position: 0, is_event: false },
-      { id: 7, section: "Selezioni Premium Carni", title: "Ribeye di Wagyu Giapponese A5", description: "Pregiato taglio di Wagyu (150g) cotto su pietra lavica.", price: 85, available: true, position: 1, is_event: false },
-      // Primi
-      { id: 8, section: "Primi Piatti", title: "Spaghetto ai Ricci e Caviale Oscietra", description: "Spaghetti Cavalieri, polpa di ricci, burro acido, Caviale Oscietra.", price: 28, available: true, position: 0, is_event: false },
-      // Dolci
-      { id: 9, section: "I Dolci", title: "Mousse Champagne & Lamponi", description: "Mousse leggera al cioccolato bianco e Champagne, cuore al lampone.", price: 12, available: true, position: 0, is_event: false },
-      // Event Menu
-      { id: 10, section: "Menu di Gala", title: "Ostrica Imperiale al Caviale", description: "Ostrica del Belon servita con emulsione allo Champagne e caviale.", price: 18, available: true, position: 0, is_event: true },
-      { id: 11, section: "Menu di Gala", title: "Tagliolino all'Astice Blu", description: "Tagliolini all'uovo freschi, astice blu della Bretagna, Cognac.", price: 35, available: true, position: 1, is_event: true }
+      // Acqua e Soft Drinks
+      { id: 1, section: "Acqua e Soft Drinks", title: "Acqua Grande", description: "", price: 0, available: true, position: 0, is_event: false },
+      { id: 2, section: "Acqua e Soft Drinks", title: "Acqua Piccola", description: "", price: 0, available: true, position: 1, is_event: false },
+      { id: 3, section: "Acqua e Soft Drinks", title: "Cedrata", description: "", price: 0, available: true, position: 2, is_event: false },
+      { id: 4, section: "Acqua e Soft Drinks", title: "Chino' Sanpellegrino", description: "", price: 0, available: true, position: 3, is_event: false },
+      { id: 5, section: "Acqua e Soft Drinks", title: "Coca Cola Lattina", description: "", price: 0, available: true, position: 4, is_event: false },
+      { id: 6, section: "Acqua e Soft Drinks", title: "Estathe", description: "", price: 0, available: true, position: 5, is_event: false },
+      { id: 7, section: "Acqua e Soft Drinks", title: "Fanta Lattina", description: "", price: 0, available: true, position: 6, is_event: false },
+      { id: 8, section: "Acqua e Soft Drinks", title: "Lemon Soda", description: "", price: 0, available: true, position: 7, is_event: false },
+      { id: 9, section: "Acqua e Soft Drinks", title: "Sprite Lattina", description: "", price: 0, available: true, position: 8, is_event: false },
+      { id: 10, section: "Acqua e Soft Drinks", title: "Succo di Frutta", description: "", price: 0, available: true, position: 9, is_event: false },
+
+      // Energy Drinks
+      { id: 11, section: "Energy Drinks", title: "Monster", description: "", price: 0, available: true, position: 0, is_event: false },
+      { id: 12, section: "Energy Drinks", title: "Powerade", description: "", price: 0, available: true, position: 1, is_event: false },
+      { id: 13, section: "Energy Drinks", title: "Red Bull", description: "", price: 0, available: true, position: 2, is_event: false },
+      { id: 14, section: "Energy Drinks", title: "Schweppes", description: "", price: 0, available: true, position: 3, is_event: false },
+
+      // Aperitivi e Cocktail
+      { id: 15, section: "Aperitivi e Cocktail", title: "Campari Soda", description: "", price: 0, available: true, position: 0, is_event: false },
+      { id: 16, section: "Aperitivi e Cocktail", title: "Cocktail Sanp", description: "", price: 0, available: true, position: 1, is_event: false },
+      { id: 17, section: "Aperitivi e Cocktail", title: "Crodino", description: "", price: 0, available: true, position: 2, is_event: false },
+      { id: 18, section: "Aperitivi e Cocktail", title: "Gin Lemon", description: "", price: 0, available: true, position: 3, is_event: false },
+      { id: 19, section: "Aperitivi e Cocktail", title: "Spritz Aperol", description: "", price: 0, available: true, position: 4, is_event: false },
+      { id: 20, section: "Aperitivi e Cocktail", title: "Spritz Camp", description: "", price: 0, available: true, position: 5, is_event: false },
+
+      // Amari, Liquori e Distillati
+      { id: 21, section: "Amari, Liquori e Distillati", title: "Amaro / Limoncello", description: "", price: 0, available: true, position: 0, is_event: false },
+      { id: 22, section: "Amari, Liquori e Distillati", title: "Chartreuse", description: "", price: 0, available: true, position: 1, is_event: false },
+      { id: 23, section: "Amari, Liquori e Distillati", title: "Grappa", description: "", price: 0, available: true, position: 2, is_event: false },
+      { id: 24, section: "Amari, Liquori e Distillati", title: "Jefferson", description: "", price: 0, available: true, position: 3, is_event: false },
+
+      // Vini e Bollicine
+      { id: 25, section: "Vini e Bollicine", title: "Calice Vino", description: "", price: 0, available: true, position: 0, is_event: false },
+      { id: 26, section: "Vini e Bollicine", title: "Bicchiere Prosecco", description: "", price: 0, available: true, position: 1, is_event: false },
+      { id: 27, section: "Vini e Bollicine", title: "Bottiglia Ca' Dei Frati", description: "", price: 0, available: true, position: 2, is_event: false },
+      { id: 28, section: "Vini e Bollicine", title: "Bottiglia Catapanus", description: "", price: 0, available: true, position: 3, is_event: false },
+      { id: 29, section: "Vini e Bollicine", title: "Bottiglia Costanza", description: "", price: 0, available: true, position: 4, is_event: false },
+      { id: 30, section: "Vini e Bollicine", title: "Bottiglia D'Arapri'", description: "", price: 0, available: true, position: 5, is_event: false },
+      { id: 31, section: "Vini e Bollicine", title: "Bottiglia Ele'", description: "", price: 0, available: true, position: 6, is_event: false },
+      { id: 32, section: "Vini e Bollicine", title: "Bottiglia Falanghina", description: "", price: 0, available: true, position: 7, is_event: false },
+      { id: 33, section: "Vini e Bollicine", title: "Bottiglia Farder Prosecc", description: "", price: 0, available: true, position: 8, is_event: false },
+      { id: 34, section: "Vini e Bollicine", title: "Bottiglia Prosecco", description: "", price: 0, available: true, position: 9, is_event: false },
+      { id: 35, section: "Vini e Bollicine", title: "Bottiglia Spumante Weart", description: "", price: 0, available: true, position: 10, is_event: false },
+      { id: 36, section: "Vini e Bollicine", title: "Bottiglia Vino Imperator", description: "", price: 0, available: true, position: 11, is_event: false },
+      { id: 37, section: "Vini e Bollicine", title: "Bottiglia Wheart", description: "", price: 0, available: true, position: 12, is_event: false },
+      { id: 38, section: "Vini e Bollicine", title: "Favonio", description: "", price: 0, available: true, position: 13, is_event: false },
+
+      // Pizzeria e Cicci
+      { id: 39, section: "Pizzeria e Cicci", title: "4 Formaggi", description: "", price: 0, available: true, position: 0, is_event: false },
+      { id: 40, section: "Pizzeria e Cicci", title: "4 Stagioni", description: "", price: 0, available: true, position: 1, is_event: false },
+      { id: 41, section: "Pizzeria e Cicci", title: "American", description: "", price: 0, available: true, position: 2, is_event: false },
+      { id: 42, section: "Pizzeria e Cicci", title: "Bellavista", description: "", price: 0, available: true, position: 3, is_event: false },
+      { id: 43, section: "Pizzeria e Cicci", title: "Brasciola Di Cavallo", description: "", price: 0, available: true, position: 4, is_event: false },
+      { id: 44, section: "Pizzeria e Cicci", title: "Calabrese", description: "", price: 0, available: true, position: 5, is_event: false },
+      { id: 45, section: "Pizzeria e Cicci", title: "Campana", description: "", price: 0, available: true, position: 6, is_event: false },
+      { id: 46, section: "Pizzeria e Cicci", title: "Capricciosa", description: "", price: 0, available: true, position: 7, is_event: false },
+      { id: 47, section: "Pizzeria e Cicci", title: "Champignon", description: "", price: 0, available: true, position: 8, is_event: false },
+      { id: 48, section: "Pizzeria e Cicci", title: "Ciccio Classico", description: "", price: 0, available: true, position: 9, is_event: false },
+      { id: 49, section: "Pizzeria e Cicci", title: "Ciccio Farcito", description: "", price: 0, available: true, position: 10, is_event: false },
+      { id: 50, section: "Pizzeria e Cicci", title: "Ciccio Pomodorino", description: "", price: 0, available: true, position: 11, is_event: false },
+      { id: 51, section: "Pizzeria e Cicci", title: "Corner", description: "", price: 0, available: true, position: 12, is_event: false },
+      { id: 52, section: "Pizzeria e Cicci", title: "Crudaiola", description: "", price: 0, available: true, position: 13, is_event: false },
+      { id: 53, section: "Pizzeria e Cicci", title: "Crudo", description: "", price: 0, available: true, position: 14, is_event: false },
+      { id: 54, section: "Pizzeria e Cicci", title: "Francesina", description: "", price: 0, available: true, position: 15, is_event: false },
+      { id: 55, section: "Pizzeria e Cicci", title: "Prosciutto E Wurstel", description: "", price: 0, available: true, position: 16, is_event: false },
+      { id: 56, section: "Pizzeria e Cicci", title: "Pugliese", description: "", price: 0, available: true, position: 17, is_event: false },
+      { id: 57, section: "Pizzeria e Cicci", title: "Romana", description: "", price: 0, available: true, position: 18, is_event: false },
+      { id: 58, section: "Pizzeria e Cicci", title: "Scattata Barese", description: "", price: 0, available: true, position: 19, is_event: false },
+      { id: 59, section: "Pizzeria e Cicci", title: "Sprint", description: "", price: 0, available: true, position: 20, is_event: false },
+      { id: 60, section: "Pizzeria e Cicci", title: "Valtellina", description: "", price: 0, available: true, position: 21, is_event: false },
+      { id: 61, section: "Pizzeria e Cicci", title: "Vegetariana", description: "", price: 0, available: true, position: 22, is_event: false },
+      { id: 62, section: "Pizzeria e Cicci", title: "Wurstel", description: "", price: 0, available: true, position: 23, is_event: false },
+
+      // Panini e Wrap
+      { id: 63, section: "Panini e Wrap", title: "American Wrap", description: "", price: 0, available: true, position: 0, is_event: false },
+      { id: 64, section: "Panini e Wrap", title: "Crispy Burger", description: "", price: 0, available: true, position: 1, is_event: false },
+      { id: 65, section: "Panini e Wrap", title: "Panino Cotoletta", description: "", price: 0, available: true, position: 2, is_event: false },
+      { id: 66, section: "Panini e Wrap", title: "Panino Hamburger", description: "", price: 0, available: true, position: 3, is_event: false },
+      { id: 67, section: "Panini e Wrap", title: "Panino Hot Dog", description: "", price: 0, available: true, position: 4, is_event: false },
+
+      // Secondi e Insalate
+      { id: 68, section: "Secondi e Insalate", title: "Cotoletta", description: "", price: 0, available: true, position: 0, is_event: false },
+      { id: 69, section: "Secondi e Insalate", title: "Filetto Al Pepe Verde", description: "", price: 0, available: true, position: 1, is_event: false },
+      { id: 70, section: "Secondi e Insalate", title: "Filetto Alla Griglia", description: "", price: 0, available: true, position: 2, is_event: false },
+      { id: 71, section: "Secondi e Insalate", title: "Fitness Salad", description: "", price: 0, available: true, position: 3, is_event: false },
+      { id: 72, section: "Secondi e Insalate", title: "Hamburger", description: "", price: 0, available: true, position: 4, is_event: false },
+      { id: 73, section: "Secondi e Insalate", title: "Tagliata Di Manzo", description: "", price: 0, available: true, position: 5, is_event: false },
+      { id: 74, section: "Secondi e Insalate", title: "Tagliata Di Pollo", description: "", price: 0, available: true, position: 6, is_event: false },
+
+      // Servizio
+      { id: 75, section: "Servizio", title: "1 Coperto", description: "", price: 0, available: true, position: 0, is_event: false }
     ];
     localStorage.setItem(MOCK_MENU_KEY, JSON.stringify(defaultMenu));
   }
@@ -98,8 +173,19 @@ const initMockData = () => {
       print_frame_color: '#D4AF37',
       font_title: 'Playfair Display',
       font_body: 'Montserrat',
-      event_name: 'Gran Galà di Capodanno',
-      event_subtitle: 'Exclusive Golden Night'
+      event_name: 'Festa Esclusiva CapClub',
+      event_subtitle: 'Private Night & Gala Dinner',
+      section_order: JSON.stringify([
+        "Acqua e Soft Drinks",
+        "Energy Drinks",
+        "Aperitivi e Cocktail",
+        "Amari, Liquori e Distillati",
+        "Vini e Bollicine",
+        "Pizzeria e Cicci",
+        "Panini e Wrap",
+        "Secondi e Insalate",
+        "Servizio"
+      ])
     };
     localStorage.setItem(MOCK_SETTINGS_KEY, JSON.stringify(defaultSettings));
   }
