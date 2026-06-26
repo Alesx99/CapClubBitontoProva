@@ -286,7 +286,7 @@ export const api = {
           setAdminPassword(password);
           return { ok: true, message: 'Logged in successfully (Mock Mode)' };
         }
-        throw new Error('Password errata (Default Demo Password: capclub2026)');
+        throw new Error('Password errata.');
       }
     );
   },
